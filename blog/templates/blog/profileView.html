@@ -1,0 +1,65 @@
+{%  extends 'blog/usermain.html' %}
+
+{% block content %}
+<style>
+.profile-pic{
+		max-width: 200px;
+		max-height:200px;
+		margin: 0 auto;
+		border-radius: 50%;
+		margin-left:  40.5%;
+	}
+
+.posts{
+		max-width: 500px;
+		max-height:500px;
+		margin: 0 auto;
+		
+
+	}
+.caption{
+		
+		
+
+	}
+.name{
+	margin-left: 41.8%;
+	font-size: 25px;
+}
+</style>
+
+
+  <img class="profile-pic" src="{{request.user.person.profile_pic.url}}" >
+  <br>
+  <br>
+  <a class='name'>{{user.name}}</a>
+  <br>
+
+
+          {% for post in posts %}
+				
+			<a class = "caption">
+			{{post.caption}}<br>
+			</a>
+
+			<img class="posts" src="{{post.picture.url}}" >
+			
+			<br>
+			<p> </p>
+			<br>
+			<p> </p>
+
+			
+          {% endfor %}
+          {% for blog in blogs %}
+				
+			{{blog.content}}<br>
+			
+			
+			
+          {% endfor %}
+				
+
+
+{% endblock %}
+ 

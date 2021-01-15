@@ -1,0 +1,17 @@
+{%  extends 'blog/usermain.html' %}
+{% load static %}
+{% block content %}
+<h1>Create Post</h1>
+<form method="POST" action="" enctype="multipart/form-data">
+	{% csrf_token %}
+ {{form.userPerosn.as_hidden}}
+ <p>Add a Caption</p>
+ <br>
+ {{form.caption}}
+ <br>
+ <p>Upload Something interesting</p>
+ {{form.picture}}
+ <br>
+<input type="submit" value="Upload">
+</form>
+{% endblock%}

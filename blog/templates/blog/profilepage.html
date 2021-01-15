@@ -1,0 +1,48 @@
+{%  extends 'blog/usermain.html' %}
+
+{% block content %}
+<p>What your friedns are doing</p>
+<style type="text/css">
+.profile-pic{
+		max-width: 200px;
+		max-height:200px;
+		margin: 0 auto;
+		border-radius: 50%;
+		margin-left:  40.5%;
+	}
+
+
+.posts{
+		max-width: 500px;
+		max-height:500px;
+		margin: 0 auto;
+		
+
+	}
+
+</style>
+{% for x in followingUsers %}
+  
+  	{%  for p in x.u2.post_set.all %}
+  		{{p.userPerson.name}}
+  		<br>
+  		{{p.caption}}
+		<br>
+		<img class="posts" src="{{p.picture.url}}" ><br>
+		
+
+  {% endfor %}
+  {%  for p in x.u2.blog_set.all %}
+  		{{p.userPerson.name}}
+  		<br>
+  		{{p.content}}
+		<br>
+		
+  	
+
+  {% endfor %}
+<br>
+{% endfor %}
+
+
+{% endblock%}

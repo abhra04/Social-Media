@@ -1,0 +1,14 @@
+{%  extends 'blog/usermain.html' %}
+{% load static %}
+{% block content %}
+
+<form method="POST" action="" enctype="multipart/form-data">
+{% csrf_token %}
+				
+{{form.as_p}}
+
+<input type="submit" name="Update Information" value="Update Information">
+</form>
+
+
+{% endblock %}

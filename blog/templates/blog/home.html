@@ -1,0 +1,36 @@
+{%  extends 'blog/main.html' %}
+
+{% block content %}
+<style>
+
+.center {
+  margin: 0;
+  font-size: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.center2 {
+  margin: 0;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+</style>
+
+
+<div class="center2">
+<marquee behavior="scroll" direction="right">Welcome to the Social Media</marquee>
+</div>
+
+<div class="center">
+<a href="/login" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Login</a>
+<a href="/register" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Register</a>
+</div> 
+
+
+{% endblock %}

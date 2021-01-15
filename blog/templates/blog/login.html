@@ -1,0 +1,21 @@
+{%  extends 'blog/main.html' %}
+
+{% block content %}
+<form method="POST" action="">
+		{% csrf_token %}
+			
+			<p>Enter User Name
+			<input type="text" name="username" placeholder="Username..."> </p>
+						
+
+			<p>Enter PassWord
+			<input type="password" name="password" placeholder="Password..." ></p>
+							
+			<input type="submit" value="Login"></p>
+				   			
+</form>
+{% for message in messages %}
+<p id="messages">{{message}}</p>
+{% endfor %}
+
+{% endblock%}

@@ -1,0 +1,25 @@
+{%  extends 'blog/usermain.html' %}
+{% load static %}
+{% block content %}
+<h1>Follow Someone</h1>
+
+<br>
+<p>People You are already Following</p>
+{% for x in people_you_are_following %}
+
+	{{x.u2.name}}
+	<br>
+
+{% endfor %}
+
+
+
+
+<form method="POST" action="" enctype="multipart/form-data">
+	{% csrf_token %}
+ {{form.u1.as_hidden}}
+ <p> Follow someone you find interesting</p>
+ {{form.u2}}
+<input type="submit" value="Follow">
+</form>
+{% endblock%}
