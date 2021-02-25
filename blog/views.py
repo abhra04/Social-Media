@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 from .models import *
+from django.contrib.auth.decorators import login_required
 
 def homePage(request):
 	return render(request,'blog/home.html')
@@ -54,7 +55,7 @@ def loginPage(request):
 def logoutUser(request):
 	logout(request)
 	return redirect('login')
-
+@login_required(login_url = 'login')
 def profileSettings(request):
 	person = request.user.person
 	form = Profile(instance=person)
@@ -64,13 +65,13 @@ def profileSettings(request):
 			form.save()
 	context = {'form':form}
 	return render(request, 'blog/account_settings.html', context)
-
+@login_required(login_url = 'login')
 def userProfile(request, pk_test):
 	user = person.objects.get(unique_id=pk_test)	
 	followingUsers = request.user.person.follower.all()
 	context = {'user':user,'followingUsers' : followingUsers}
 	return render(request, 'blog/profilepage.html',context)
-
+@login_required(login_url = 'login')
 def profileView(request):
 	user = request.user.person
 	posts = request.user.person.post_set.all()
@@ -78,12 +79,12 @@ def profileView(request):
 	context = {'user':user,'posts': posts,'blogs':blogs}
 	print(posts)
 	return render(request, 'blog/profileView.html',context)
-
+@login_required(login_url = 'login')
 def reloadWall(request):
 	user = request.user.person
 	idx = user.unique_id
 	return redirect('http://127.0.0.1:8000/profile/' + str(idx))
-
+@login_required(login_url = 'login')
 def createPost(request):
 	people = request.user.person
 	idx = people.unique_id
@@ -97,7 +98,7 @@ def createPost(request):
 			return redirect('http://127.0.0.1:8000/profile/' + str(idx))
 	context = {'form':form}
 	return render(request,'blog/createPost.html',context)
-
+@login_required(login_url = 'login')
 def createBlog(request):
 	people = request.user.person
 	idx = people.unique_id
@@ -111,7 +112,7 @@ def createBlog(request):
 			return redirect('http://127.0.0.1:8000/profile/' + str(idx))
 	context = {'form':form}
 	return render(request,'blog/createBlog.html',context)
-
+@login_required(login_url = 'login')
 def followingUser(request):
 	people = request.user.person
 	idx = people.unique_id
