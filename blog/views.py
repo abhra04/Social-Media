@@ -84,6 +84,8 @@ def reloadWall(request):
 	user = request.user.person
 	idx = user.unique_id
 	return redirect('http://127.0.0.1:8000/profile/' + str(idx))
+
+
 @login_required(login_url = 'login')
 def createPost(request):
 	people = request.user.person
@@ -98,6 +100,8 @@ def createPost(request):
 			return redirect('http://127.0.0.1:8000/profile/' + str(idx))
 	context = {'form':form}
 	return render(request,'blog/createPost.html',context)
+
+
 @login_required(login_url = 'login')
 def createBlog(request):
 	people = request.user.person
@@ -126,7 +130,6 @@ def followingUser(request):
 			return redirect('http://127.0.0.1:8000/profile/' + str(idx))
 	context = {'form':form1,'people_you_are_following':people_you_are_following }
 	return render(request,'blog/followUser.html',context)
-
 
 
 
